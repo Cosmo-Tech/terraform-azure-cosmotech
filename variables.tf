@@ -132,7 +132,7 @@ variable "disk_tier" {
 
 variable "kubernetes_version" {
   type    = string
-  default = "1.25.5"
+  default = "1.25.6"
 }
 
 variable "tenant_id" {
@@ -262,7 +262,7 @@ variable "create_secrets" {
 variable "dns_zone_name" {
   description = "The DNS zone name to create platform subdomain. Example: api.cosmotech.com"
   type        = string
-  default     = ""
+  default     = "api.cosmotech.com"
 }
 
 variable "dns_zone_rg" {
