@@ -2,7 +2,7 @@
 
 module "cosmotech-prerequisites" {
   source           = "Cosmo-Tech/cosmotech-prerequisites/azure"
-  version          = "1.1.35"
+  version          = "1.1.36"
   client_id        = var.client_id
   client_secret    = var.client_secret
   tenant_id        = var.tenant_id
