@@ -5,6 +5,7 @@ variable "resource_group" {
 
 variable "cluster_name" {
   type = string
+  default = ""
 }
 
 variable "client_id" {
@@ -44,6 +45,7 @@ variable "api_dns_name" {
 
 variable "cluster_issuer_email" {
   type = string
+  default = "platform@cosmotech.com"
 }
 
 variable "cluster_issuer_name" {
@@ -181,6 +183,7 @@ variable "project_stage" {
 variable "customer_name" {
   description = "The customer name"
   type        = string
+  default = "cosmotech"
 }
 
 variable "project_name" {

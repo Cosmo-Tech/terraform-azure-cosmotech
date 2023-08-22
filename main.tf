@@ -1,4 +1,7 @@
-
+locals {
+  cluster_name = var.cluster_name != "" ? var.cluster_name : "phoenix${var.dns_record}"
+  resource_group = var.resource_group != "" ? var.resource_group : var.dns_record
+}
 
 module "cosmotech-prerequisites" {
   source           = "Cosmo-Tech/cosmotech-prerequisites/azure"
@@ -20,9 +23,9 @@ module "cosmotech-prerequisites" {
   dns_record       = var.dns_record
   vnet_iprange     = var.vnet_iprange
   api_version_path = var.api_version_path
-  resource_group   = var.resource_group
+  resource_group   = local.resource_group
   image_path       = var.image_path
-  cluster_name     = var.cluster_name
+  cluster_name     = local.cluster_name
   create_cosmosdb  = var.create_cosmosdb
 }
 
