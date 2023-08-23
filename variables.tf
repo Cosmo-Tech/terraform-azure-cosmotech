@@ -84,7 +84,7 @@ variable "cosmos_key" {
 }
 
 variable "chart_package_version" {
-  type = string
+  type    = string
   default = "2.3.9-rc"
 }
 
