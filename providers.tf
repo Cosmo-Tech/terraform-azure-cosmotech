@@ -18,6 +18,7 @@ terraform {
     storage_account_name = "arch3teststate"
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
+    access_key           = "aX4mSAuwEG4X1ryLljJg743IqqdX/bq46tMFQMjk6IREhasuvolk8xd8cOm5bQdNVRndbrD6NwWx+AStpWYtMg=="
   }
   required_version = ">= 1.3.9"
 }
