@@ -1,5 +1,5 @@
 locals {
-  cluster_name = var.cluster_name != "" ? var.cluster_name : "phoenix${var.dns_record}"
+  cluster_name   = var.cluster_name != "" ? var.cluster_name : "phoenix${var.dns_record}"
   resource_group = var.resource_group != "" ? var.resource_group : var.dns_record
 }
 

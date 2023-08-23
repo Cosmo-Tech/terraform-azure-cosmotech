@@ -3,6 +3,11 @@ variable "resource_group" {
   default = ""
 }
 
+variable "resource_group_state" {
+  type    = string
+  default = ""
+}
+
 variable "cluster_name" {
   type    = string
   default = ""
@@ -84,7 +89,7 @@ variable "cosmos_key" {
 }
 
 variable "chart_package_version" {
-  type = string
+  type    = string
   default = "2.3.9-rc"
 }
 

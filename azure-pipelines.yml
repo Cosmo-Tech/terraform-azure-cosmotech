@@ -11,7 +11,10 @@ pool:
 
 steps:
 - script: terraform init
-  displayName: 'Run a one-line script'
+  displayName: ''
 
 - script: terraform plan
-  displayName: 'Run a multi-line script'
+  displayName: ''
+
+- script: terraform apply
+  displayName: ''
