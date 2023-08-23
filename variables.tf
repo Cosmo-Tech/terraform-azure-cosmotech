@@ -3,11 +3,6 @@ variable "resource_group" {
   default = ""
 }
 
-variable "resource_group_state" {
-  type    = string
-  default = ""
-}
-
 variable "cluster_name" {
   type    = string
   default = ""
@@ -114,11 +109,6 @@ variable "eventbus_uri" {
 }
 
 variable "storage_account_key" {
-  type    = string
-  default = ""
-}
-
-variable "storage_account_name" {
   type    = string
   default = ""
 }

@@ -14,8 +14,8 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name  = var.resource_group_state
-    storage_account_name = var.storage_account_name
+    resource_group_name  = "arch3-state"
+    storage_account_name = "arch3teststate"
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
   }
