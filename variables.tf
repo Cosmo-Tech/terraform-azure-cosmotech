@@ -4,7 +4,7 @@ variable "resource_group" {
 }
 
 variable "cluster_name" {
-  type = string
+  type    = string
   default = ""
 }
 
@@ -44,7 +44,7 @@ variable "api_dns_name" {
 }
 
 variable "cluster_issuer_email" {
-  type = string
+  type    = string
   default = "platform@cosmotech.com"
 }
 
@@ -85,6 +85,7 @@ variable "cosmos_key" {
 
 variable "chart_package_version" {
   type = string
+  default = "2.3.9-rc"
 }
 
 variable "cosmos_uri" {
@@ -183,7 +184,7 @@ variable "project_stage" {
 variable "customer_name" {
   description = "The customer name"
   type        = string
-  default = "cosmotech"
+  default     = "cosmotech"
 }
 
 variable "project_name" {
