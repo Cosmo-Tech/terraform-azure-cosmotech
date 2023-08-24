@@ -10,11 +10,11 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: terraform init
+- script: terraform init -input=false
   displayName: ''
 
 - script: terraform plan
   displayName: ''
 
-- script: terraform apply -auto-approve
+- script: terraform apply -auto-approve -input=false
   displayName: ''
