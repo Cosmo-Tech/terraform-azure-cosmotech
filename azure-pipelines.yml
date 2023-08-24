@@ -16,5 +16,5 @@ steps:
 - script: terraform plan
   displayName: ''
 
-- script: terraform apply
+- script: terraform apply -auto-approve
   displayName: ''
