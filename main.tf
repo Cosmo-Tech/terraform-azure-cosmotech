@@ -5,7 +5,7 @@ locals {
 
 module "cosmotech-prerequisites" {
   source           = "Cosmo-Tech/cosmotech-prerequisites/azure"
-  version          = "1.1.36"
+  version          = "1.1.37"
   client_id        = var.client_id
   client_secret    = var.client_secret
   tenant_id        = var.tenant_id
@@ -29,35 +29,31 @@ module "cosmotech-prerequisites" {
   create_cosmosdb  = var.create_cosmosdb
 }
 
-module "cosmotech-platform" {
-  source                    = "Cosmo-Tech/cosmotech-platform/azure"
-  version                   = "1.0.37"
-  subscription_id           = var.subscription_id
-  tenant_id                 = var.tenant_id
-  client_id                 = var.client_id
-  client_secret             = var.client_secret
-  cluster_issuer_email      = var.cluster_issuer_email
-  cluster_issuer_name       = var.cluster_issuer_name
-  tls_secret_name           = var.tls_secret_name
-  namespace                 = var.namespace
-  monitoring_namespace      = var.monitoring_namespace
-  api_dns_name              = module.cosmotech-prerequisites.out_fqdn
-  resource_group            = module.cosmotech-prerequisites.out_ip_resource_group
-  platform_sp_client_id     = module.cosmotech-prerequisites.out_platform_sp_client_id
-  platform_sp_client_secret = module.cosmotech-prerequisites.out_platform_sp_client_secret
-  storage_account_key       = module.cosmotech-prerequisites.out_storage_account_key
-  storage_account_name      = module.cosmotech-prerequisites.out_storage_account_name
-  acr_login_password        = module.cosmotech-prerequisites.out_acr_login_password
-  acr_login_server          = module.cosmotech-prerequisites.out_acr_login_server
-  acr_login_username        = module.cosmotech-prerequisites.out_acr_login_username
-  loadbalancer_ip           = module.cosmotech-prerequisites.out_public_ip
-  adx_ingestion_uri         = module.cosmotech-prerequisites.out_adx_ingestion_uri
-  adx_uri                   = module.cosmotech-prerequisites.out_adx_uri
-  cosmos_uri                = module.cosmotech-prerequisites.out_cosmos_uri
-  cosmos_key                = module.cosmotech-prerequisites.out_cosmos_key
-  eventbus_uri              = module.cosmotech-prerequisites.out_eventbus_uri
-  network_adt_clientid      = module.cosmotech-prerequisites.out_networkadt_clientid
-  network_adt_password      = module.cosmotech-prerequisites.out_network_adt_password
-  managed_disk_id           = module.cosmotech-prerequisites.managed_disk_id
-  kube_config               = module.cosmotech-prerequisites.out_aks_phoenix_config
+module "cosmotech-common" {
+  source               = "Cosmo-Tech/cosmotech-common/azure"
+  version              = "0.2.0"
+  client_id            = var.client_id
+  client_secret        = var.client_secret
+  dns_record           = var.dns_record
+  owner_list           = var.owner_list
+  subscription_id      = var.subscription_id
+  tenant_id            = var.tenant_id
+  cluster_issuer_email = var.cluster_issuer_email
+  cluster_issuer_name  = var.cluster_issuer_name
+  tls_secret_name      = var.tls_secret_name
+  namespace            = var.namespace
+  project_name         = var.project_name
+  vault_addr           = var.vault_addr
+  vault_token          = var.vault_token
+}
+
+data "terraform_remote_state" "state" {
+  backend = "azurerm"
+  config = {
+    resource_group_name  = "${var.tf_resource_group_name}"
+    storage_account_name = "${var.tf_storage_account_name}"
+    container_name       = "${var.tf_container_name}"
+    key                  = "${var.tf_blob_name}"
+    access_key           = "${var.tf_access_key}"
+  }
 }

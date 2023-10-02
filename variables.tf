@@ -316,3 +316,40 @@ variable "create_cosmosdb" {
   type    = bool
   default = false
 }
+
+variable "vault_addr" {
+  type = string
+}
+
+variable "vault_token" {
+  type = string
+}
+
+variable "tf_resource_group_name" {
+  type    = string
+  default = ""
+}
+
+variable "tf_storage_account_name" {
+  type    = string
+  default = ""
+}
+
+variable "tf_container_name" {
+  type    = string
+  default = ""
+}
+
+variable "tf_blob_name" {
+  type    = string
+  default = ""
+}
+
+variable "tf_access_key" {
+  type    = string
+  default = ""
+}
+
+variable "deployment_type" {
+  type = string
+}
