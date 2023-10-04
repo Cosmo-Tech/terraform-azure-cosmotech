@@ -16,6 +16,7 @@ module "cosmotech-common" {
   namespace            = var.namespace
   vault_addr           = var.vault_addr
   vault_token          = var.vault_token
+  deployment_type      = var.deployment_type 
 }
 
 # data "terraform_remote_state" "state" {
