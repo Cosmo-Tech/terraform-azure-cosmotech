@@ -4,19 +4,22 @@ locals {
 }
 
 module "cosmotech-common" {
-  source               = "Cosmo-Tech/cosmotech-common/azure"
-  version              = "0.2.1"
-  client_id            = var.client_id
-  client_secret        = var.client_secret
-  dns_record           = var.dns_record
-  owner_list           = var.owner_list
-  project_name         = var.project_name
-  subscription_id      = var.subscription_id
-  tenant_id            = var.tenant_id
-  namespace            = var.namespace
-  vault_addr           = var.vault_addr
-  vault_token          = var.vault_token
-  deployment_type      = var.deployment_type 
+  source                 = "Cosmo-Tech/cosmotech-common/azure"
+  version                = "0.2.2"
+  client_id              = var.client_id
+  client_secret          = var.client_secret
+  dns_record             = var.dns_record
+  owner_list             = var.owner_list
+  project_name           = var.project_name
+  subscription_id        = var.subscription_id
+  tenant_id              = var.tenant_id
+  namespace              = var.namespace
+  vault_addr             = var.vault_addr
+  vault_token            = var.vault_token
+  deployment_type        = var.deployment_type
+  platform_client_id     = var.client_id
+  platform_client_secret = var.client_secret
+  platform_subnet_id     = var.subnet_id
 }
 
 # data "terraform_remote_state" "state" {

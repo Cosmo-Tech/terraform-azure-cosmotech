@@ -353,3 +353,7 @@ variable "tf_access_key" {
 variable "deployment_type" {
   type = string
 }
+
+variable "subnet_id" {
+  type = string
+}
