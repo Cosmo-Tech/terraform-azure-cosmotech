@@ -5,7 +5,7 @@ locals {
 
 module "cosmotech-common" {
   source                 = "Cosmo-Tech/cosmotech-common/azure"
-  version                = "0.2.2"
+  version                = "0.2.3"
   client_id              = var.client_id
   client_secret          = var.client_secret
   dns_record             = var.dns_record
