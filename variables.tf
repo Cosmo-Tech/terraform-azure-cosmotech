@@ -35,7 +35,7 @@ variable "loadbalancer_ip" {
 
 variable "tls_secret_name" {
   type    = string
-  default = ""
+  default = "letsencrypt-prod"
 }
 
 variable "api_dns_name" {
@@ -50,7 +50,7 @@ variable "cluster_issuer_email" {
 
 variable "cluster_issuer_name" {
   type    = string
-  default = ""
+  default = "letsencrypt-prod"
 }
 
 variable "ingress_nginx_version" {
@@ -85,7 +85,7 @@ variable "cosmos_key" {
 
 variable "chart_package_version" {
   type    = string
-  default = "2.3.9-rc"
+  default = "2.4.7-public"
 }
 
 variable "cosmos_uri" {
@@ -313,6 +313,11 @@ variable "network_adt_password" {
 }
 
 variable "create_cosmosdb" {
+  type    = bool
+  default = false
+}
+
+variable "create_backup" {
   type    = bool
   default = false
 }

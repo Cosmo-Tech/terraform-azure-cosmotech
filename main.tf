@@ -1,11 +1,12 @@
 locals {
   cluster_name   = var.cluster_name != "" ? var.cluster_name : "phoenix${var.dns_record}"
   resource_group = var.resource_group != "" ? var.resource_group : var.dns_record
+  kube_config    = module.cosmotech-prerequisites.out_aks_phoenix_config
 }
 
 module "cosmotech-prerequisites" {
   source           = "Cosmo-Tech/cosmotech-prerequisites/azure"
-  version          = "1.1.36"
+  version          = "1.1.38"
   client_id        = var.client_id
   client_secret    = var.client_secret
   tenant_id        = var.tenant_id
@@ -27,11 +28,12 @@ module "cosmotech-prerequisites" {
   image_path       = var.image_path
   cluster_name     = local.cluster_name
   create_cosmosdb  = var.create_cosmosdb
+  create_backup    = var.create_backup
 }
 
 module "cosmotech-platform" {
   source                    = "Cosmo-Tech/cosmotech-platform/azure"
-  version                   = "1.0.37"
+  version                   = "1.0.38"
   subscription_id           = var.subscription_id
   tenant_id                 = var.tenant_id
   client_id                 = var.client_id
@@ -41,6 +43,7 @@ module "cosmotech-platform" {
   tls_secret_name           = var.tls_secret_name
   namespace                 = var.namespace
   monitoring_namespace      = var.monitoring_namespace
+  chart_package_version     = var.chart_package_version
   api_dns_name              = module.cosmotech-prerequisites.out_fqdn
   resource_group            = module.cosmotech-prerequisites.out_ip_resource_group
   platform_sp_client_id     = module.cosmotech-prerequisites.out_platform_sp_client_id
@@ -59,5 +62,5 @@ module "cosmotech-platform" {
   network_adt_clientid      = module.cosmotech-prerequisites.out_networkadt_clientid
   network_adt_password      = module.cosmotech-prerequisites.out_network_adt_password
   managed_disk_id           = module.cosmotech-prerequisites.managed_disk_id
-  kube_config               = module.cosmotech-prerequisites.out_aks_phoenix_config
+  kube_config               = local.kube_config
 }
